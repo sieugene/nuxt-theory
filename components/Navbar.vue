@@ -29,10 +29,13 @@
                 >About</nuxt-link
               >
             </li>
-            <li class="nav-item">
+            <li v-if="!isAuth" class="nav-item">
               <nuxt-link class="nav-link" active-class="active" to="/Login"
                 >Login</nuxt-link
               >
+            </li>
+            <li v-else-if="isAuth" class="nav-item">
+              <a href="#" class="nav-link" @click.prevent="logout">Logout</a>
             </li>
           </ul>
         </div>
@@ -40,5 +43,19 @@
     </nav>
   </header>
 </template>
+<script>
+export default {
+  computed: {
+    isAuth() {
+      return this.$store.getters.isAuth
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+    },
+  },
+}
+</script>
 
 <style scoped></style>

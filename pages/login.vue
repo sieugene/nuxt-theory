@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="onSubmit">
     <h1>Login</h1>
     <div class="form-group">
       <input type="text" class="form-control" />
@@ -10,12 +10,18 @@
     <p>
       <nuxt-link to="/">home</nuxt-link>
     </p>
-    <button class="btn btn-primary">Login</button>
+    <button class="btn btn-primary" type="submit">Login</button>
   </form>
 </template>
 <script>
 export default {
   layout: 'empty',
+  methods: {
+    onSubmit() {
+      this.$store.dispatch('login')
+      this.$router.push('/')
+    },
+  },
 }
 </script>
 <style scoped>
