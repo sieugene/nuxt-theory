@@ -12,15 +12,15 @@
 </template>
 <script>
 export default {
-  async fetch({ store, error }) {
-    try {
-      if (store.getters['users/users'].length === 0) {
-        await store.dispatch('users/fetchUsers')
-      }
-    } catch (err) {
-      error(err)
-    }
-  },
+  // async fetch({ store, error }) {
+  //   try {
+  //     if (store.getters['users/users'].length === 0) {
+  //       await store.dispatch('users/fetchUsers')
+  //     }
+  //   } catch (err) {
+  //     error(err)
+  //   }
+  // },
   data() {
     return {
       pageTitle: 'Users page',
